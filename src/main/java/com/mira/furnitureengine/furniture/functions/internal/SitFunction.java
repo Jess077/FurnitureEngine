@@ -1,7 +1,6 @@
 package com.mira.furnitureengine.furniture.functions.internal;
 
 import com.mira.furnitureengine.furniture.functions.Function;
-import com.ranull.sittable.Sittable;
 import dev.geco.gsit.api.GSitAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -32,12 +31,8 @@ public class SitFunction implements Function {
         PluginManager pm = Bukkit.getServer().getPluginManager();
 
         if(pm.getPlugin("GSit") != null) {
-            if (GSitAPI.getSeats(location.getBlock()).isEmpty()) {
+            if (GSitAPI.getSeatsByBlock(location.getBlock()).isEmpty()) {
                 GSitAPI.createSeat(location.getBlock(), player, true, 0, yOffset, 0, 0, true);
-            }
-        } else if(pm.getPlugin("Sittable") != null) {
-            if (!Sittable.isBlockOccupied(location.getBlock())) {
-                Sittable.sitOnBlock(player, location.getBlock(), 0.0, yOffset, 0.0, player.getFacing().getOppositeFace());
             }
         } else {
             throw new IllegalArgumentException("Missing sit plugin. Please install either GSit or Sittable.");

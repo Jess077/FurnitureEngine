@@ -7,7 +7,6 @@ authors: [Gabby]
 description: Allows you to make custom usable furniture
 softdepend:
   - GSit
-  - Sittable
 prefix: "FE"
 
 commands:
